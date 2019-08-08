@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 
 const app = express();
 
+const PORT = process.env.PORT || '3300';
+
 app.use(bodyParser.json());
 
 app.get('/getMyName', (req, res, next)=>{
@@ -13,8 +15,8 @@ app.get('/getMyName', (req, res, next)=>{
 app.post('/getMyName', (req, res, next)=>{
     const paramName = req.body;
     res.status(200).json(paramName)
-})
+});
 
-app.listen('3300', function(err){
+app.listen(PORT, function(err){
     err ? console.log(err) : console.log('server started')
 });
